@@ -1,0 +1,8 @@
+{
+  "require": {
+    "shyim/database-entities-builder": "dev-master"
+  },
+  "replace": {
+    "doctrine/dbal": "^2.5"
+  }
+}

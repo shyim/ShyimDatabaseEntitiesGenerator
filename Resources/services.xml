@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="Shyim\DatabaseEntitiesBuilder\Services\BaseClassGenerator"
+                 class="Shyim\DatabaseEntitiesBuilder\Services\BaseClassGenerator"/>
+
+        <service id="Shyim\DatabaseEntitiesBuilder\Services\ModelGenerator"
+                 class="Shyim\DatabaseEntitiesBuilder\Services\ModelGenerator"/>
+
+        <service id="Shyim\DatabaseEntitiesBuilder\Services\RepositoryGenerator"
+                 class="Shyim\DatabaseEntitiesBuilder\Services\RepositoryGenerator"/>
+
+        <service id="Shyim\DatabaseEntitiesBuilder\Services\ServiceGenerator"
+                 class="Shyim\DatabaseEntitiesBuilder\Services\ServiceGenerator"/>
+
+        <service id="Shyim\DatabaseEntitiesBuilder\Services\DatabaseReader"
+                 class="Shyim\DatabaseEntitiesBuilder\Services\DatabaseReader">
+            <argument type="service" id="dbal_connection"/>
+            <argument type="service" id="service_container"/>
+        </service>
+
+        <service id="Shyim\DatabaseEntitiesBuilder\Generator" class="Shyim\DatabaseEntitiesBuilder\Generator">
+            <argument type="service" id="Shyim\DatabaseEntitiesBuilder\Services\DatabaseReader"/>
+            <argument type="service" id="Shyim\DatabaseEntitiesBuilder\Services\ModelGenerator"/>
+            <argument type="service" id="Shyim\DatabaseEntitiesBuilder\Services\BaseClassGenerator"/>
+            <argument type="service" id="Shyim\DatabaseEntitiesBuilder\Services\RepositoryGenerator"/>
+            <argument type="service" id="Shyim\DatabaseEntitiesBuilder\Services\ServiceGenerator"/>
+        </service>
+    </services>
+</container>
